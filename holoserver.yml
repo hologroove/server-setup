@@ -1,0 +1,16 @@
+---
+- hosts: webservers
+  remote_user: root
+  tasks:
+   - name: test connection
+     ping:
+   - name: Create the webmaster user
+     user:
+        name: webmaster
+        password: '$6$Ull/GuDp$GW7PBBQCV5akgOAULGyl2buwEoMgAnaUx01af1CVlhWaBkfa432Gi6ZNCN7fRziJljxJloVaLdkBKpV2mj35h1'
+        groups: sudo,www-data
+        state: present
+        shell: /bin/bash
+        system: no
+        createhome: yes
+        home: /home/webmaster
